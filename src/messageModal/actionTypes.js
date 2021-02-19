@@ -1,0 +1,4 @@
+// export const SET_CURRENT_MESSAGE_ID = 'SET_CURRENT_MESSAGE_ID';
+// export const DROP_CURRENT_MESSAGE_ID = 'DROP_CURRENT_MESSAGE_ID';
+// export const HIDE_MODAL = 'HIDE_MODAL';
+// export const SHOW_MODAL = 'SHOW_MODAL';

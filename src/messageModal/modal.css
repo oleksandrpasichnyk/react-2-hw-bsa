@@ -1,0 +1,7 @@
+.modal {
+  display: block;
+  z-index: -1;
+  background-color: red;
+  width: 50vw;
+  height: 50vh;
+}
