@@ -1,13 +1,22 @@
 import { SEND_MESSAGE, EDIT_MESSAGE, DELETE_MESSAGE } from './actionTypes';
-import service from './service';
+import getNewId from './service';
 
-export const sendMessage = data => ({
-  type: SEND_MESSAGE,
-  payload: {
-    id: service.getNewId(),
-    data
-  }
-});
+export const sendMessage = input => {
+  let messageText = input.value;
+  let data = {
+    "text": messageText,
+    "createdAt": new Date().toISOString(),
+    "editedAt": ""
+  };
+
+  input.value = '';
+  return ({
+    type: SEND_MESSAGE,
+    payload: {
+      id: getNewId(),
+      data
+  }})
+};
 
 export const editMessage = (id, data) => ({
   type: EDIT_MESSAGE,

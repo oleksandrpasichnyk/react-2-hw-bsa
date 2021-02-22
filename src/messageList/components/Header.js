@@ -3,7 +3,7 @@ import '../styles/Header.css'
 
 class Header extends React.Component {
   constructor(props){
-    super();
+    super(props);
     this.state = {
       chatName: 'My chat',
       usersCount: [...new Set(props.messages.map(message => message.userId))].length,
@@ -11,7 +11,7 @@ class Header extends React.Component {
       lastMessageTime: new Date(props.messages[props.messages.length - 1].editedAt || props.messages[props.messages.length - 1].createdAt)
     };
   }
-
+  
   getHours(){
     return this.state.lastMessageTime.getHours();
   }

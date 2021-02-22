@@ -1,34 +1,18 @@
 import React from 'react';
-import './styles/MessageList.css';
-import Message from './components/Message';
-import DateLine from './components/DateLine';
-import { setCurrentMessageId, showModal } from '../messageModal/actions';
-import * as actions from './actions';
-import { connect } from 'react-redux';
+import '../styles/MessageList.css';
+import Message from './Message';
+import DateLine from './DateLine';
 
 class MessageList extends React.Component {
   constructor(props){
     super(props);
-    console.log(props);
     this.state = {
-      messageList: props.messagesData.messages,
-      id: props.messagesData.id,
+      messageList: props.messagesData.messages.messages,
+      id: props.messagesData.messages.currentUserId,
     };
     this.isNextDayBlock = this.isNextDayBlock.bind(this);
     this.getSortDate = this.getSortDate.bind(this);
     this.compareDates = this.compareDates.bind(this);
-    this.onSend = this.onSend.bind(this);
-    this.onEdit = this.onEdit.bind(this);
-    this.onDelete = this.onDelete.bind(this);
-  }
-
-  onEdit(id){
-    this.props.setCurrentMessageId(id);
-    this.props.showModal();
-  }
-
-  onDelete(id){
-    this.props.deleteMessage(id);
   }
 
   getSortDate(message){
@@ -60,7 +44,13 @@ class MessageList extends React.Component {
             <div>
               <DateLine isVisible={this.isNextDayBlock(message)} date={ this.getSortDate(message) }></DateLine>
             </div>
-            <Message messageData={{message: message, id: this.state.id, onEdit: this.onEdit, onDelete: this.onDelete}}></Message>
+            <Message messageData = {{
+              message: message, 
+              id: this.state.id, 
+              showModal: this.props.messagesData.showModal, 
+              setCurrentMessageId: this.props.messagesData.setCurrentMessageId,
+              deleteMessage: this.props.messagesData.deleteMessage}
+            }></Message>
           </div>
         ))}
       </div>
@@ -68,16 +58,4 @@ class MessageList extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    messages: state.messages
-  }
-};
-
-const mapDispatchToProps = {
-  ...actions,
-  setCurrentMessageId,
-  showModal
-};
-
-export default connect(mapStateToProps, mapDispatchToProps) (MessageList);
+export default MessageList;

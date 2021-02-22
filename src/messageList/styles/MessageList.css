@@ -38,6 +38,7 @@
 }
 
 .message-text {
+  text-align: left;
   padding-right: 10px;
   max-width: 25vw;
   margin-left: 10px;
@@ -58,8 +59,43 @@
   justify-content: flex-end;
 }
 
+.message-icons-menu {
+  display: flex;
+  /* width: 50%; */
+  margin-bottom: 5px;
+  margin-right: -5px;
+}
+
+.edit-icon {
+  margin-right: 3px;
+}
+
+.edit-icon, .delete-icon {
+  cursor: pointer;
+  opacity: 0.5;
+  height: 20px;
+  width: auto;
+  transition: 0.15s ease-in all;
+  /* margin-right: -5px; */
+}
+
+.edit-icon:hover, .delete-icon:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.message-date-menu-block {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
 .message-date-block {
   display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   align-items: flex-end;
 }
 
